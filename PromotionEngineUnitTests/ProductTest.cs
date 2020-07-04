@@ -5,17 +5,16 @@ using PromotionEngineBLL.PromotionService;
 namespace PromotionEngineUnitTests
 {
     [TestClass]
-    public class PromotionTest
-    {
-
+    public class ProductTest
+    {        
         [TestMethod]
-        public void test_get_promotions()
+        public void test_get_products()
         {
             //Arrange
-            var promotion = new PromotionService();
+            var product = new ProductService();
 
             //Act
-            var result = promotion.getPromotions();
+            var result = product.getProducts();
 
             //Assert
             Assert.IsNotNull(result);
