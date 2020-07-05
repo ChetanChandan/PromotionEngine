@@ -8,7 +8,7 @@ namespace PromotionEngineDTO
 {
     public class PromotionDTO
     {
-        public List<ProductDTO> ProductUnit { get; set; }
+        public List<ProductDTO> Product { get; set; }
 
         public decimal PromotionPrice { get; set; }
 

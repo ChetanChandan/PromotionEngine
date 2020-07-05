@@ -12,7 +12,13 @@ namespace PromotionEngineBLL.PromotionService
     {
         public List<PromotionDTO> getPromotions()
         {
-            return null;
+            var promotions = new List<PromotionDTO>();
+                       
+            promotions.Add(new PromotionDTO() { Product = new List<ProductDTO>() { new ProductDTO("A") { ProductQuantity = 3} }, PromotionPrice = 130, IsActive = true });
+            promotions.Add(new PromotionDTO() { Product = new List<ProductDTO>() { new ProductDTO("B") { ProductQuantity = 2 } }, PromotionPrice = 45, IsActive = true });
+            promotions.Add(new PromotionDTO() { Product = new List<ProductDTO>() { new ProductDTO("C") { ProductQuantity = 1 } , new ProductDTO("D") { ProductQuantity = 1 } }, PromotionPrice = 30, IsActive = true });
+
+            return promotions;
         }
     }
 }
