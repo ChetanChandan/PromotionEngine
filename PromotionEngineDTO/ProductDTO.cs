@@ -14,7 +14,7 @@ namespace PromotionEngineDTO
 
         public decimal Price { get; set; }
 
-        public int ProductQuantity { get; set; }
+        public int? ProductQuantity { get; set; }
 
         public ProductDTO(string name)
         {

@@ -14,10 +14,10 @@ namespace PromotionEngineBLL.PromotionService
         {
             var products = new List<ProductDTO>();
 
-            products.Add(new ProductDTO() { Id = 1 , ProductName = "A" , Price = 50 , ProductQuantity = 10 });
-            products.Add(new ProductDTO() { Id = 2, ProductName = "B", Price = 30 , ProductQuantity = 10 });
-            products.Add(new ProductDTO() { Id = 3, ProductName = "C", Price = 20 , ProductQuantity = 10});
-            products.Add(new ProductDTO() { Id = 4, ProductName = "D", Price = 15 , ProductQuantity = 10});
+            products.Add(new ProductDTO("A") { Id = 1 , Price = 50 });
+            products.Add(new ProductDTO("B") { Id = 2, Price = 30 });
+            products.Add(new ProductDTO("C") { Id = 3, Price = 20 });
+            products.Add(new ProductDTO("D") { Id = 4, Price = 15 });
 
             return products;
         }
