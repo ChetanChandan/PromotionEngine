@@ -8,8 +8,11 @@ namespace PromotionEngineDTO
 {
     public class OrderDTO
     {
-        public int OrderId { get; set; }
-
         public List<ProductDTO> products { get; set; }
+
+        public OrderDTO()
+        {
+            products = new List<ProductDTO>();
+        }
     }
 }

@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PromotionInterface\IOrder.cs" />
     <Compile Include="PromotionInterface\IProduct.cs" />
     <Compile Include="PromotionInterface\IPromotion.cs" />
+    <Compile Include="PromotionService\OrderService.cs" />
     <Compile Include="PromotionService\ProductService.cs" />
     <Compile Include="PromotionService\PromotionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
