@@ -50,10 +50,12 @@ namespace PromotionEngine
             string ord = Console.ReadLine();
             string[] input = ord.Split(',');           
 
-            var orderResult = orderService.createOrders(input);      
-            
-            //order checkout 
+            var orderResult = orderService.createOrders(input);
 
+            //order checkout 
+            decimal? totalAmount = orderService.orderApplyPromotionCheckout(orderResult);
+            Console.WriteLine("Total Amount to be paid is", totalAmount);
+            Console.ReadLine();
         }
     }
 }

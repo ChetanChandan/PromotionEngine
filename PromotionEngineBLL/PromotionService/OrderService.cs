@@ -29,5 +29,15 @@ namespace PromotionEngineBLL.PromotionService
 
             return order;
         }
+
+        public decimal? orderApplyPromotionCheckout(OrderDTO order)
+        {
+            var products = order.products;
+            var promotion = new PromotionService();
+
+            decimal? totalAmount = promotion.checkApplyPromotion(products);
+            
+            return totalAmount;
+        }
     }
 }

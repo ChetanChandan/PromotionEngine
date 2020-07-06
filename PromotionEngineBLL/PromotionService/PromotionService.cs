@@ -20,5 +20,54 @@ namespace PromotionEngineBLL.PromotionService
 
             return promotions;
         }
+
+        public decimal? checkApplyPromotion(List<ProductDTO> products)
+        {
+            decimal? total = 0;      
+
+            var promotions = getPromotions();
+            var prodList = products.Select(p => p.ProductName).ToList();           
+
+            foreach (var promo in promotions)
+            {
+                if (promo.Product.Count == 1)
+                {
+                    foreach (var prod in promo.Product)
+                    {
+                        //find prods in order
+                        var prodsInOrder = products.Where(p => p.ProductName.Equals(prod.ProductName)).FirstOrDefault();
+
+                        if(prodsInOrder.ProductQuantity >= prod.ProductQuantity)
+                        {
+                            var promoQuant = prod.ProductQuantity;
+                            var noOfPromo = prodsInOrder.ProductQuantity / promoQuant;
+                            var remainingProds = prodsInOrder.ProductQuantity % promoQuant;
+
+                            if (noOfPromo > 0)
+                                total = total + (noOfPromo * promo.PromotionPrice);
+
+                            if (remainingProds > 0)
+                                total = total + (remainingProds * prodsInOrder.Price);
+                        }
+                        else
+                        {
+                            total = total + (prodsInOrder.ProductQuantity * prodsInOrder.Price);
+                        }
+                    }
+                }
+                else//double product promo
+                {
+                    var promoProdList = new List<ProductDTO>();
+
+                    foreach (var prod in promo.Product)
+                    {
+
+                    }
+                }
+
+            }
+
+            return total;
+        }       
     }
 }

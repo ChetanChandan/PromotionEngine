@@ -10,5 +10,7 @@ namespace PromotionEngineBLL.PromotionInterface
     public interface IOrder
     {
         OrderDTO createOrders(string[] ord);
+
+        decimal? orderApplyPromotionCheckout(OrderDTO order);
     }
 }

@@ -10,5 +10,7 @@ namespace PromotionEngineBLL.PromotionInterface
     public interface IPromotion
     {
         List<PromotionDTO> getPromotions();
+
+        decimal? checkApplyPromotion(List<ProductDTO> products);
     }
 }
