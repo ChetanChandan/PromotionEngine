@@ -26,7 +26,7 @@ namespace PromotionEngineBLL.PromotionService
             decimal? total = 0;      
 
             var promotions = getPromotions();
-            var prodList = products.Select(p => p.ProductName).ToList();           
+            //var prodList = products.Select(p => p.ProductName).ToList();           
 
             foreach (var promo in promotions)
             {
@@ -57,14 +57,43 @@ namespace PromotionEngineBLL.PromotionService
                 }
                 else//double product promo
                 {
+                    var promoProdCount = promo.Product.Count;
                     var promoProdList = new List<ProductDTO>();
+
+                    var promQuantity = promo.Product.Sum(s => s.ProductQuantity);
 
                     foreach (var prod in promo.Product)
                     {
+                        var findDoublePromoProds = products.Where(p => p.ProductName.Equals(prod.ProductName)).FirstOrDefault();
 
+                        if(findDoublePromoProds != null)
+                        {
+                            promoProdList.Add(findDoublePromoProds);
+                        }
+                    }
+
+                    var promProdQuant = promoProdList.Sum(p => p.ProductQuantity);
+
+                    //if count is not equal then no promo
+                    if(promoProdList.Count != promoProdCount)
+                    {
+                        foreach(var p in promoProdList)
+                        {
+                            total = total + (p.ProductQuantity * p.Price);
+                        }
+                    }
+                    else
+                    {
+                        if(promProdQuant % promQuantity == 0)
+                        {
+                            total = total + ((promProdQuant / promQuantity) * promo.PromotionPrice);
+                        }
+                        else
+                        {
+
+                        }
                     }
                 }
-
             }
 
             return total;
