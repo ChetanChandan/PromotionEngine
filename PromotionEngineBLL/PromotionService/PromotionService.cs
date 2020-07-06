@@ -74,7 +74,7 @@ namespace PromotionEngineBLL.PromotionService
 
                     var promProdQuant = promoProdList.Sum(p => p.ProductQuantity);
 
-                    //if count is not equal then no promo
+                    //if count of product is not equal then no promo
                     if(promoProdList.Count != promoProdCount)
                     {
                         foreach(var p in promoProdList)
@@ -90,7 +90,16 @@ namespace PromotionEngineBLL.PromotionService
                         }
                         else
                         {
+                            var promtobeApplied = promProdQuant / promQuantity;
+                            var remProd = promProdQuant % promQuantity;
 
+                            if(promtobeApplied > 0)
+                                total = total + (promtobeApplied * promo.PromotionPrice);
+
+                            var productLeft = promoProdList.Where(p => p.ProductQuantity > remProd).FirstOrDefault();
+
+                            if(productLeft != null && remProd > 0)
+                                total = total + (productLeft.Price * remProd);
                         }
                     }
                 }
